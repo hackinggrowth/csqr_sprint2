@@ -16,7 +16,7 @@ fnEstimateInit = function () {
 }
 
 fnEstimateInit();
-$('.email-enter > div').load("https://cdn.jsdelivr.net/gh/hackinggrowth/csqr_sprint2@dev/hkg2.html", function(){
+$('.email-enter > div').load("https://cdn.jsdelivr.net/gh/hackinggrowth/csqr_sprint2@dev/hkg2.html", (data) => {
     console.log("email show!");
     $('.email-enter').show();
 });
