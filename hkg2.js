@@ -16,3 +16,8 @@ fnEstimateInit = function () {
 }
 
 fnEstimateInit();
+$('.email-enter > div').load("https://cdn.jsdelivr.net/gh/hackinggrowth/csqr_sprint2@dev/hkg2.html", function(){
+    $('.email-enter').show();
+});
+
+                    
