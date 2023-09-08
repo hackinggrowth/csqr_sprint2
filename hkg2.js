@@ -271,7 +271,7 @@ function goTermsOpen(v, t) {
     type = t
 }
 
-var Popup = function Popup() {
+function Popup() {
   return {
     el: {
       $wrap: null,
