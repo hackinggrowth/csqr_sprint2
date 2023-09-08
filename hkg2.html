@@ -756,8 +756,10 @@
       </div>
   </div>
   <script>
+    console.log(Popup);
     $('#hgk-sprint2 > .popup-wrap').each(function(){
-        var popup = Popup($(this));  
+        var popup = Popup();  
+        popup.init($(this));
     });
   </script>
   <!-- //popup -->
