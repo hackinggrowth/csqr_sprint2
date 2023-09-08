@@ -17,13 +17,6 @@ fnEstimateInit = function () {
 
 fnEstimateInit();
 
-let changeElement = ()=>{
-    $('.email-enter > div').load("https://cdn.jsdelivr.net/gh/hackinggrowth/csqr_sprint2@dev/hkg2.html", (data) => {
-    console.log("email show!");
-    $('.email-enter').show();
-});
-};
 
-changeElement();
 
                     
