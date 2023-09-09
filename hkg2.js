@@ -83,7 +83,7 @@ function hkgReady() {
         fnText("company", 'kr-ko');
     }
     $("#btnSend").click(function () {
-
+        console.log("click");
         let companyCheck = fnText("company", 'kr-ko');
         let mobilePhoneCheck = fnNumber("mobilePhone", 'kr-ko');
         let emailAddressCheck = fnEmail("emailAddress", 'kr-ko');
@@ -110,6 +110,7 @@ function hkgReady() {
             $("#terms-warning-text").hide();
         }
         
+        console.log(retTF);
         if (retTF) {
             var HQ_Optin_Terms = $("#agree5").is(":checked") ? "Yes" : "No";
             var HQ_Optin_Privacy = $("#agree1").is(":checked") ? "Yes" : "No";
