@@ -83,8 +83,7 @@ function hkgReady() {
         fnText("company", 'kr-ko');
     }
     $("#btnSend").click(function () {
-        let titleCheck = fnSelect("title", 'kr-ko');
-        let industryCheck = fnSelect("industry", 'kr-ko');
+
         let companyCheck = fnText("company", 'kr-ko');
         let mobilePhoneCheck = fnNumber("mobilePhone", 'kr-ko');
         let emailAddressCheck = fnEmail("emailAddress", 'kr-ko');
@@ -110,22 +109,7 @@ function hkgReady() {
         } else {
             $("#terms-warning-text").hide();
         }
-        if (lastNameCheck && mobilePhoneCheck && companyCheck && emailAddressCheck) {
-            if (!industryCheck) {
-                elementRollCenter($('#industryDivId'));
-                return;
-            }
-            if (!titleCheck) {
-                console.log("titleCheck");
-                elementRollCenter($('#titleDivId'));
-                return;
-            }
-            if (!ecommerceVal) {
-                console.log("ecommerceVal");
-                elementRollCenter($('#eCommerceId'));
-                return;
-            }
-        }
+        
         if (retTF) {
             var HQ_Optin_Terms = $("#agree5").is(":checked") ? "Yes" : "No";
             var HQ_Optin_Privacy = $("#agree1").is(":checked") ? "Yes" : "No";
@@ -183,6 +167,8 @@ function hkgReady() {
             //     });
             // })
             console.log("send");
+            $('.email-enter').hide();
+            $('#sortContentList').css('filter', 'none');
         }
     });
     // 모두 동의
