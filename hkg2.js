@@ -52,9 +52,9 @@ function hkgReady() {
     $('#title').change(function (e) {
         fnSelect("title", 'kr-ko');
     })
-    $("input[type=radio][name=ecommerce]").change(function (e) {
-        $('#eCommerceId').next("div.form-con-info").remove();
-    })
+    // $("input[type=radio][name=ecommerce]").change(function (e) {
+    //     $('#eCommerceId').next("div.form-con-info").remove();
+    // })
     $("input[type=checkbox][name=contactInformation]").change(function (e) {
         getContactInformationArray();
     });
@@ -90,13 +90,13 @@ function hkgReady() {
         let lastNameCheck = fnName("lastName", 'kr-ko');
         let contactInformationArray = getContactInformationArray();
         var retTF = true;
-        $(".error-text").each(function () {
-            var chkId = $(this).attr("id");
-            if (chkId != "shipping-section-error" && chkId !=
-                "contactInformationError" && chkId != "ecommerceErrorText") {
-                retTF = false;
-            }
-        });
+        // $(".error-text").each(function () {
+        //     var chkId = $(this).attr("id");
+        //     if (chkId != "shipping-section-error" && chkId !=
+        //         "contactInformationError" && chkId != "ecommerceErrorText") {
+        //         retTF = false;
+        //     }
+        // });
         
         if ($('#agree7').is(':checked') && contactInformationArray.length === 0) {
             retTF = false;
@@ -131,8 +131,8 @@ function hkgReady() {
                 "mobilePhone": $("#mobilePhone").val(),
                 "company": $("#company").val(),
                 "title": $('#title').val(),
-                "industry": $('#industry').val(),
-                "ecommerce": $("input[type=radio][name=ecommerce]:checked").val(),
+                // "industry": $('#industry').val(),
+                // "ecommerce": $("input[type=radio][name=ecommerce]:checked").val(),
                 "agree5": HQ_Optin_Terms,
                 "agree1": HQ_Optin_Privacy,
                 "agree2": HQ_Optin_Transfer_Overseas,
