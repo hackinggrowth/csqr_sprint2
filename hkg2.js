@@ -1,21 +1,4 @@
-_fnEstimateInit = fnEstimateInit;
-fnEstimateInit = function () {
-    var quoteData = getGlobalData("hkg_test");
-    setGlobalData("estimateResponseData", quoteData);
-    clearGlobalData("hkg_test");
-    if (quoteData) {
-        setDefaultFromTo(quoteData.saveRequestData);
-        fnRenderQuoteList(quoteData.quoteResponseData);
-    } else {
-        $("#type-ocean").click();
-        $("#type-fcl").click();
-        $("#btn-departure-delet").show();
-    }
-    // let saveData = getGlobalData("estimateResponseData");
-    clearGlobalData("estimateResponseData");
-}
 
-fnEstimateInit();
 
 function showPop(msg, classes, isContact) {
     console.log("isContact", isContact);
@@ -46,7 +29,7 @@ function jumpContact() {
     window.location.href = "/kr-ko/contact.do?celloInSelect=견적문의" + param;
 }
 
-$(document).ready(function () {
+function hkgReady() {
     // input check
     $("#firstName").keyup(function (e) {
         fnName("firstName", 'kr-ko');
@@ -175,30 +158,31 @@ $(document).ready(function () {
                 "hQMKTinfoPhone": hqMktPhone,
                 "hQMKTinfoSMS": hqMktSms
             };
-            showLoading(function () {
-                $.ajax({
-                    url: "https://s73756918.t.eloqua.com/e/f2",
-                    type: "POST",
-                    dataType: 'json',
-                    data: formData,
-                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-                    success: function (data) {
-                        offLoading();
-                        console.log("successData: ", data);
-                        location.href = "./newsletter-ok.do"
-                    },
-                    error: function (json) {
-                        offLoading();
-                        if (json.status === 200 && json.statusText ===
-                            'OK') {
-                            location.href = "./newsletter-ok.do"
-                        } else {
-                            console.log("eloquaResponse: ", json)
-                            alert("Network Error");
-                        }
-                    }
-                });
-            })
+            // showLoading(function () {
+            //     $.ajax({
+            //         url: "https://s73756918.t.eloqua.com/e/f2",
+            //         type: "POST",
+            //         dataType: 'json',
+            //         data: formData,
+            //         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            //         success: function (data) {
+            //             offLoading();
+            //             console.log("successData: ", data);
+            //             location.href = "./newsletter-ok.do"
+            //         },
+            //         error: function (json) {
+            //             offLoading();
+            //             if (json.status === 200 && json.statusText ===
+            //                 'OK') {
+            //                 location.href = "./newsletter-ok.do"
+            //             } else {
+            //                 console.log("eloquaResponse: ", json)
+            //                 alert("Network Error");
+            //             }
+            //         }
+            //     });
+            // })
+            console.log("send");
         }
     });
     // 모두 동의
@@ -255,7 +239,7 @@ $(document).ready(function () {
             selectWrapMobileUpd($(this))
         });
     }
-});
+};
 
 var type;
 
