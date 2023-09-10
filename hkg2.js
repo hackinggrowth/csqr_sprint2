@@ -46,12 +46,12 @@ function hkgReady() {
     $("#company").keyup(function (e) {
         fnText("company", 'kr-ko');
     });
-    $('#industry').change(function (e) {
-        fnSelect("industry", 'kr-ko');
-    })
-    $('#title').change(function (e) {
-        fnSelect("title", 'kr-ko');
-    })
+    // $('#industry').change(function (e) {
+    //     fnSelect("industry", 'kr-ko');
+    // })
+    // $('#title').change(function (e) {
+    //     fnSelect("title", 'kr-ko');
+    // })
     // $("input[type=radio][name=ecommerce]").change(function (e) {
     //     $('#eCommerceId').next("div.form-con-info").remove();
     // })
@@ -112,61 +112,29 @@ function hkgReady() {
         
         console.log(retTF);
         if (retTF) {
-            var HQ_Optin_Terms = $("#agree5").is(":checked") ? "Yes" : "No";
-            var HQ_Optin_Privacy = $("#agree1").is(":checked") ? "Yes" : "No";
-            var HQ_Optin_Transfer_Overseas = $("#agree2").is(":checked") ? "Yes" : "No";
-            var HQ_Optin_Share_GlobalOffices = $("#agree3").is(":checked") ? "Yes" : "No";
-            var HQ_Optin_Age = $("#agree6").is(":checked") ? "Yes" : "No";
-            var hqEmailOptIn = $("#agree4").is(":checked") ? "Yes" : "No";
-            var hqMktEmail = $("#agree8").is(":checked") ? "Yes" : "No";
-            var hqMktPhone = $("#agree9").is(":checked") ? "Yes" : "No";
-            var hqMktSms = $("#agree10").is(":checked") ? "Yes" : "No";
-            var formData = {
-                "elqFormName": "CS_NewsletterSubscribeForm_Kr-Ko",
-                "elqSiteID": "73756918",
-                "elqCustomerGUID": elqCustomerGUID,
-                "elqCookieWrite": "0",
-                "lastName": $("#lastName").val(),
-                "emailAddress": $("#emailAddress").val(),
-                "mobilePhone": $("#mobilePhone").val(),
-                "company": $("#company").val(),
-                "title": $('#title').val(),
-                // "industry": $('#industry').val(),
-                // "ecommerce": $("input[type=radio][name=ecommerce]:checked").val(),
-                "agree5": HQ_Optin_Terms,
-                "agree1": HQ_Optin_Privacy,
-                "agree2": HQ_Optin_Transfer_Overseas,
-                "agree3": HQ_Optin_Share_GlobalOffices,
-                "agree7": HQ_Optin_Age,
-                "agree4": hqEmailOptIn,
-                "hQMKTinfoEmail": hqMktEmail,
-                "hQMKTinfoPhone": hqMktPhone,
-                "hQMKTinfoSMS": hqMktSms
-            };
-            // showLoading(function () {
-            //     $.ajax({
-            //         url: "https://s73756918.t.eloqua.com/e/f2",
-            //         type: "POST",
-            //         dataType: 'json',
-            //         data: formData,
-            //         contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-            //         success: function (data) {
-            //             offLoading();
-            //             console.log("successData: ", data);
-            //             location.href = "./newsletter-ok.do"
-            //         },
-            //         error: function (json) {
-            //             offLoading();
-            //             if (json.status === 200 && json.statusText ===
-            //                 'OK') {
-            //                 location.href = "./newsletter-ok.do"
-            //             } else {
-            //                 console.log("eloquaResponse: ", json)
-            //                 alert("Network Error");
-            //             }
-            //         }
-            //     });
-            // })
+            
+            var url = 'https://hooks.zapier.com/hooks/catch/8342020/3rdit0d/'
+            var fd = new FormData();
+            fd.append('name', $("#lastName").val());
+            fd.append('email', $("#emailAddress").val());
+            fd.append('phone',$("#mobilePhone").val() );
+            fd.append('company', $("#company").val());
+            fd.append('agree1',$("#agree1").is(":checked") ? "Yes" : "No");
+            fd.append('agree2',$("#agree2").is(":checked") ? "Yes" : "No");
+            fd.append('agree3',$("#agree3").is(":checked") ? "Yes" : "No");
+            fd.append('agree4',$("#agree4").is(":checked") ? "Yes" : "No");
+            fd.append('agree5',$("#agree5").is(":checked") ? "Yes" : "No");
+            fd.append('agree6',$("#agree6").is(":checked") ? "Yes" : "No");
+            fd.append('agree7',$("#agree7").is(":checked") ? "Yes" : "No");
+            fd.append('agree8',$("#agree8").is(":checked") ? "Yes" : "No");
+            fd.append('agree9',$("#agree9").is(":checked") ? "Yes" : "No");
+            fd.append('agree10',$("#agree10").is(":checked") ? "Yes" : "No");
+
+            fetch(url, {method:'POST', body:fd})
+            .then(function(res){
+                console.log('sent');
+            })
+            
             console.log("send");
             $('.email-enter').hide();
             $('#sortContentList').css('filter', 'none');
