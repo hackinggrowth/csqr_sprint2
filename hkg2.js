@@ -1,13 +1,3 @@
-function hkgNext(){
-    let companyCheck = fnText("company", 'kr-ko');
-    let mobilePhoneCheck = fnNumber("mobilePhone", 'kr-ko');
-    let emailAddressCheck = fnEmail("emailAddress", 'kr-ko');
-    let lastNameCheck = fnName("lastName", 'kr-ko');
-    if (companyCheck && mobilePhoneCheck && emailAddressCheck && lastNameCheck){
-        $("#form-section1").hide();
-        $("#form-section2").show();
-    }
-}
 
 function showPop(msg, classes, isContact) {
     console.log("isContact", isContact);
@@ -91,6 +81,19 @@ function hkgReady() {
     if ($.trim($("#company").val()) != "") {
         fnText("company", 'kr-ko');
     }
+    $("#form-section1-next").click(function (){
+        let companyCheck = fnText("company", 'kr-ko');
+        let mobilePhoneCheck = fnNumber("mobilePhone", 'kr-ko');
+        let emailAddressCheck = fnEmail("emailAddress", 'kr-ko');
+        let lastNameCheck = fnName("lastName", 'kr-ko');
+        if (companyCheck && mobilePhoneCheck && emailAddressCheck && lastNameCheck){
+            $("#form-section1").hide();
+            $("#form-section2").show();
+        }
+    
+    });
+    
+    
     $("#btnSend").click(function () {
         console.log("click");
         let companyCheck = fnText("company", 'kr-ko');
