@@ -16,8 +16,11 @@
         #form-section2{
             display:none;
         }
+        .container {
+            width: 90%;
+        }
     }
-    
+
     html[lang=ko] .email-enter .form-con-info {
         position: static;
     }
@@ -30,16 +33,7 @@
     
 </style>
 <script>
-    function hkgNext(){
-        let companyCheck = fnText("company", 'kr-ko');
-        let mobilePhoneCheck = fnNumber("mobilePhone", 'kr-ko');
-        let emailAddressCheck = fnEmail("emailAddress", 'kr-ko');
-        let lastNameCheck = fnName("lastName", 'kr-ko');
-        if (companyCheck && mobilePhoneCheck && emailAddressCheck && lastNameCheck){
-            $("#form-section1").hide();
-            $("#form-section2").show();
-        }
-    }
+
 </script>
 <div class="wrap" id="hkg-sprint2">
 
@@ -88,7 +82,7 @@
                                 data-vmsg="회사명을 120Byte 내로">
                         </div>
                     </div>
-                    <div id="form-section1-next" style="text-align: center; display:none;">
+                    <div id="form-section1-next" style="text-align: center; padding-bottom:40px;">
                       <a href="javascript:hkgNext();" id="btnHkgNext" class="btn btnM green" style="float: none;">다음</a>
                    </div>
                 </div>

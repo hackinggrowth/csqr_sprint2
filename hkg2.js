@@ -1,4 +1,13 @@
-
+function hkgNext(){
+    let companyCheck = fnText("company", 'kr-ko');
+    let mobilePhoneCheck = fnNumber("mobilePhone", 'kr-ko');
+    let emailAddressCheck = fnEmail("emailAddress", 'kr-ko');
+    let lastNameCheck = fnName("lastName", 'kr-ko');
+    if (companyCheck && mobilePhoneCheck && emailAddressCheck && lastNameCheck){
+        $("#form-section1").hide();
+        $("#form-section2").show();
+    }
+}
 
 function showPop(msg, classes, isContact) {
     console.log("isContact", isContact);
@@ -97,6 +106,9 @@ function hkgReady() {
         //         retTF = false;
         //     }
         // });
+        if (!companyCheck || !mobilePhoneCheck || !emailAddressCheck || !lastNameCheck){
+            retTF = false;
+        }
         
         
         if ($('#agree7').is(':checked') && contactInformationArray.length === 0) {
