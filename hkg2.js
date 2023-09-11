@@ -154,6 +154,8 @@ function hkgReady() {
             console.log("send");
             $('.email-enter').hide();
             $('#sortContentList').css('filter', 'none');
+            $(".express-text.air-express").css('filter', 'none');
+            $(".sort-content.chk-result.air-express").css('filter','none');
         }
     });
     // 모두 동의
