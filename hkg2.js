@@ -98,6 +98,7 @@ function hkgReady() {
         //     }
         // });
         
+        
         if ($('#agree7').is(':checked') && contactInformationArray.length === 0) {
             retTF = false;
         }

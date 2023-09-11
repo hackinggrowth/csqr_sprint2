@@ -1,4 +1,21 @@
 <style>
+    @media screen and (max-width: 767px){
+        #form-section1-next{
+            display: block;
+        }
+        #form-section2{
+            display:none;
+        }
+    }
+    @media screen and (max-width: 1440px){
+        #form-section1-next{
+            display:none;
+        }
+        #form-section2{
+            display:block;
+        }
+    }
+
     html[lang=ko] .email-enter .form-con-info {
         position: static;
     }
@@ -6,8 +23,22 @@
     #sortContentList {
         padding-bottom: 550px;
     }
+
+
     
 </style>
+<script>
+    function hkgNext(){
+        let companyCheck = fnText("company", 'kr-ko');
+        let mobilePhoneCheck = fnNumber("mobilePhone", 'kr-ko');
+        let emailAddressCheck = fnEmail("emailAddress", 'kr-ko');
+        let lastNameCheck = fnName("lastName", 'kr-ko');
+        if (companyCheck && mobilePhoneCheck && emailAddressCheck && lastNameCheck){
+            $("#form-section1").hide();
+            $("#form-section2").show();
+        }
+    }
+</script>
 <div class="wrap" id="hkg-sprint2">
 
   <div class="popup-wrap pop-email">
@@ -24,132 +55,141 @@
           <div class="inner">
             <h3 class="con-title3" style="text-align: center;padding-top: 20px;">견적 바로 보기</h3>
               <div class="form-box" style="padding-top: 0px;">
-                  <p class="form-text align-right">* 체크된 항목은 필수입력항목입니다.</p>
-                  <div class="form-row">
-                      <div class="form-con" style="margin-left:0px;">
-                          <label for="lastName" class="hidden">이름<span class="essential"><span
-                                      class="hidden">필수</span></span></label>
-                          <input type="text" id="lastName" name="lastName" maxlength="120" data-byte="120"
-                              data-vmsg="이름을 120Byte 내로" placeholder="이름*">
-                      </div>
-                      <div class="form-con">
-                          <label for="emailAddress" class="hidden">이메일<span class="essential"><span
-                                      class="hidden">필수</span></span></label>
-                          <input type="text" id="emailAddress" name="emailAddress" placeholder="이메일*" maxlength="200"
-                              data-byte="200" data-vmsg="이메일 형식에 맞게">
-                      </div>
-                  </div>
-                  <div class="form-row">
-                      <div class="form-con" style="margin-left:0px;">
-                          <label for="mobilePhone" class="hidden">연락처<span class="essential"><span
-                                      class="hidden">필수</span></span></label>
-                          <input type="number" id="mobilePhone" name="mobilePhone" placeholder="연락처*" maxlength="120"
-                              data-byte="120" data-vmsg="연락처를 120Byte 내로" onkeypress="return inNumber();">
-                      </div>
+                <div id="form-section1">
+                    <p class="form-text align-right">* 체크된 항목은 필수입력항목입니다.</p>
+                    <div class="form-row">
+                        <div class="form-con" style="margin-left:0px;">
+                            <label for="lastName" class="hidden">이름<span class="essential"><span
+                                        class="hidden">필수</span></span></label>
+                            <input type="text" id="lastName" name="lastName" maxlength="120" data-byte="120"
+                                data-vmsg="이름을 120Byte 내로" placeholder="이름*">
+                        </div>
+                        <div class="form-con">
+                            <label for="emailAddress" class="hidden">이메일<span class="essential"><span
+                                        class="hidden">필수</span></span></label>
+                            <input type="text" id="emailAddress" name="emailAddress" placeholder="이메일*" maxlength="200"
+                                data-byte="200" data-vmsg="이메일 형식에 맞게">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-con" style="margin-left:0px;">
+                            <label for="mobilePhone" class="hidden">연락처<span class="essential"><span
+                                        class="hidden">필수</span></span></label>
+                            <input type="number" id="mobilePhone" name="mobilePhone" placeholder="연락처*" maxlength="120"
+                                data-byte="120" data-vmsg="연락처를 120Byte 내로" onkeypress="return inNumber();">
+                        </div>
+  
+                        <div class="form-con">
+                            <label for="company" class="hidden">회사명<span class="essential"><span
+                                        class="hidden">필수</span></span></label>
+                            <input type="text" id="company" class="" placeholder="회사명*" maxlength="120" data-byte="120"
+                                data-vmsg="회사명을 120Byte 내로">
+                        </div>
+                    </div>
+                    <div id="form-section1-next" style="text-align: center; display:none;">
+                      <a href="javascript:hkgNext();" id="btnHkgNext" class="btn btnM green" style="float: none;">다음</a>
+                   </div>
+                </div>
+                <div class="form-section2">
+                    <div class="terms-con">
+                        <span class="check-box">
+                            <input type="checkbox" name="checkbox1" id="all-agree">
+                            <label for="all-agree">모두 동의하기</label>
+                        </span>
+                        <div class="form-con-info">
+                            <p class="warning-text" id="terms-warning-text" style="display:none">필수항목에 모두 동의하지 않으시면 본
+                                서비스를 이용하실 수 없습니다.</p><!-- 에러 시 노출 -->
+                        </div>
+                        <div class="terms-list" style="margin-bottom: 50px;">
+                            <ul>
+                                <li>
+                                    <span class="check-box">
+                                        <input type="checkbox" name="agree5" id="agree5">
+                                        <label for="agree5"><a href="javascript:goTermsOpen('5');" class="btn-terms"
+                                                role="button">이용약관</a>에 동의합니다.(필수)</label>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="check-box">
+                                        <input type="checkbox" name="agree1" id="agree1">
+                                        <label for="agree1"><a href="javascript:goTermsOpen('1');" class="btn-terms"
+                                                role="button">개인정보 수집 및 이용</a>에 동의합니다.(필수)</label>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="check-box">
+                                        <input type="checkbox" name="agree2" id="agree2">
+                                        <label for="agree2"><a href="javascript:goTermsOpen('2');" class="btn-terms"
+                                                role="button">개인정보 국외이전</a>에 동의합니다.(필수)</label>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="check-box">
+                                        <input type="checkbox" name="agree6" id="agree6">
+                                        <label for="agree6" class="agree-tit2">만 14세 이상임을 확인하고 동의합니다.(필수)</label>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="check-box">
+                                        <input type="checkbox" name="agree3" id="agree3">
+                                        <label for="agree3"><a href="javascript:goTermsOpen('3');" class="btn-terms"
+                                                role="button">개인정보 제3자 제공</a>에 동의합니다.(필수)</label>
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="check-box">
+                                        <input type="checkbox" name="agree4" id="agree4">
+                                        <label for="agree4"><a href="javascript:goTermsOpen('4');" class="btn-terms"
+                                                role="button">마케팅 활용</a>에 동의합니다.(필수)</label>
+                                    </span>
+                                </li>
+                                <li>
+                                    <div class="maketing-btn-wrap">
+                                        <span class="check-box">
+                                            <input type="checkbox" name="agree7" id="agree7">
+                                            <label for="agree7" class="agree-tit2">마케팅 정보 수신에 동의합니다.(선택)</label>
+                                        </span>
+                                        <div class="terms-list agree-form-box">
+                                            <ul>
+                                                <li>
+                                                    <span class="check-box">
+                                                        <input type="checkbox" name="contactInformation" id="agree8"
+                                                            value="email">
+                                                        <label for="agree8" class="agree-tit2 backgray">E-mail</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="check-box">
+                                                        <input type="checkbox" name="contactInformation" id="agree9"
+                                                            value="phone">
+                                                        <label for="agree9" class="agree-tit2 backgray">휴대전화 수신</label>
+                                                    </span>
+                                                </li>
+                                                <li>
+                                                    <span class="check-box">
+                                                        <input type="checkbox" name="contactInformation" id="agree10"
+                                                            value="SMS">
+                                                        <label for="agree10" class="agree-tit2 backgray">휴대전화 문자</label>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                            <div class="form-con-info">
+                                                <p class="error-text error hidden" id="contactInformationError">마케팅 활용에
+                                                    대한 수신 방법 중 하나 이상을 선택해 주세요. </p><!-- 에러 시 노출 -->
+                                            </div>
+                                            <div style="text-align: center;"><a href="javascript:;" id="btnSend" class="btn btnM green" style="float: none;">견적 바로 보기</a></div>
+                                            <p class="info-text">※ 뉴스레터 수신, 이벤트 경품 발송 등을 위해서는 (선택) 항목의 동의가 필요합니다.</p>
+                                        </div>
+                                    </div>
+                                    <!-- //maketing-btn-wrap -->
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- <p class="info-text">※ 본 사이트는 이용자 편의를 위해 쿠키정보를 활용하고 있습니다.</p> -->
+                    </div>
+                </div>
 
-                      <div class="form-con">
-                          <label for="company" class="hidden">회사명<span class="essential"><span
-                                      class="hidden">필수</span></span></label>
-                          <input type="text" id="company" class="" placeholder="회사명*" maxlength="120" data-byte="120"
-                              data-vmsg="회사명을 120Byte 내로">
-                      </div>
-                  </div>
-                  <div class="terms-con">
-                      <span class="check-box">
-                          <input type="checkbox" name="checkbox1" id="all-agree">
-                          <label for="all-agree">모두 동의하기</label>
-                      </span>
-                      <div class="form-con-info">
-                          <p class="warning-text" id="terms-warning-text" style="display:none">필수항목에 모두 동의하지 않으시면 본
-                              서비스를 이용하실 수 없습니다.</p><!-- 에러 시 노출 -->
-                      </div>
-                      <div class="terms-list" style="margin-bottom: 50px;">
-                          <ul>
-                              <li>
-                                  <span class="check-box">
-                                      <input type="checkbox" name="agree5" id="agree5">
-                                      <label for="agree5"><a href="javascript:goTermsOpen('5');" class="btn-terms"
-                                              role="button">이용약관</a>에 동의합니다.(필수)</label>
-                                  </span>
-                              </li>
-                              <li>
-                                  <span class="check-box">
-                                      <input type="checkbox" name="agree1" id="agree1">
-                                      <label for="agree1"><a href="javascript:goTermsOpen('1');" class="btn-terms"
-                                              role="button">개인정보 수집 및 이용</a>에 동의합니다.(필수)</label>
-                                  </span>
-                              </li>
-                              <li>
-                                  <span class="check-box">
-                                      <input type="checkbox" name="agree2" id="agree2">
-                                      <label for="agree2"><a href="javascript:goTermsOpen('2');" class="btn-terms"
-                                              role="button">개인정보 국외이전</a>에 동의합니다.(필수)</label>
-                                  </span>
-                              </li>
-                              <li>
-                                  <span class="check-box">
-                                      <input type="checkbox" name="agree6" id="agree6">
-                                      <label for="agree6" class="agree-tit2">만 14세 이상임을 확인하고 동의합니다.(필수)</label>
-                                  </span>
-                              </li>
-                              <li>
-                                  <span class="check-box">
-                                      <input type="checkbox" name="agree3" id="agree3">
-                                      <label for="agree3"><a href="javascript:goTermsOpen('3');" class="btn-terms"
-                                              role="button">개인정보 제3자 제공</a>에 동의합니다.(필수)</label>
-                                  </span>
-                              </li>
-                              <li>
-                                  <span class="check-box">
-                                      <input type="checkbox" name="agree4" id="agree4">
-                                      <label for="agree4"><a href="javascript:goTermsOpen('4');" class="btn-terms"
-                                              role="button">마케팅 활용</a>에 동의합니다.(필수)</label>
-                                  </span>
-                              </li>
-                              <li>
-                                  <div class="maketing-btn-wrap">
-                                      <span class="check-box">
-                                          <input type="checkbox" name="agree7" id="agree7">
-                                          <label for="agree7" class="agree-tit2">마케팅 정보 수신에 동의합니다.(선택)</label>
-                                      </span>
-                                      <div class="terms-list agree-form-box">
-                                          <ul>
-                                              <li>
-                                                  <span class="check-box">
-                                                      <input type="checkbox" name="contactInformation" id="agree8"
-                                                          value="email">
-                                                      <label for="agree8" class="agree-tit2 backgray">E-mail</label>
-                                                  </span>
-                                              </li>
-                                              <li>
-                                                  <span class="check-box">
-                                                      <input type="checkbox" name="contactInformation" id="agree9"
-                                                          value="phone">
-                                                      <label for="agree9" class="agree-tit2 backgray">휴대전화 수신</label>
-                                                  </span>
-                                              </li>
-                                              <li>
-                                                  <span class="check-box">
-                                                      <input type="checkbox" name="contactInformation" id="agree10"
-                                                          value="SMS">
-                                                      <label for="agree10" class="agree-tit2 backgray">휴대전화 문자</label>
-                                                  </span>
-                                              </li>
-                                          </ul>
-                                          <div class="form-con-info">
-                                              <p class="error-text error hidden" id="contactInformationError">마케팅 활용에
-                                                  대한 수신 방법 중 하나 이상을 선택해 주세요. </p><!-- 에러 시 노출 -->
-                                          </div>
-                                          <div style="text-align: center;"><a href="javascript:;" id="btnSend" class="btn btnM green" style="float: none;">견적 바로 보기</a></div>
-                                          <p class="info-text">※ 뉴스레터 수신, 이벤트 경품 발송 등을 위해서는 (선택) 항목의 동의가 필요합니다.</p>
-                                      </div>
-                                  </div>
-                                  <!-- //maketing-btn-wrap -->
-                              </li>
-                          </ul>
-                      </div>
-                      <!-- <p class="info-text">※ 본 사이트는 이용자 편의를 위해 쿠키정보를 활용하고 있습니다.</p> -->
-                  </div>
+
                   <!-- <div class="btn-box">
                       <a href="javascript:;" id="btnSend" class="btn btnM green">신청하기</a>
                   </div> -->
