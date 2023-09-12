@@ -128,8 +128,8 @@ function hkgReady() {
         
         console.log(retTF);
         if (retTF) {
+            var url = "https://hooks.zapier.com/hooks/catch/15705827/3r5067i/"
             
-            var url = 'https://hooks.zapier.com/hooks/catch/8342020/3rdit0d/'
             var fd = new FormData();
             fd.append('name', $("#lastName").val());
             fd.append('email', $("#emailAddress").val());
