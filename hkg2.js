@@ -225,6 +225,11 @@ function goTerms(v, tf) {
 }
 
 function goTermsOpen(v, t) {
+    if ($('.wrap').width() < 768){
+        $('.wrap').addClass('scrolled');
+        $('.wrap').addClass('down');
+    }
+
     $('#popup_term0' + v).getInstance().open();
     type = t
 }
