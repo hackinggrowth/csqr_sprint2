@@ -95,7 +95,6 @@ function hkgReady() {
     
     
     $("#btnSend").click(function () {
-        console.log("click");
         let companyCheck = fnText("company", 'kr-ko');
         let mobilePhoneCheck = fnNumber("mobilePhone", 'kr-ko');
         let emailAddressCheck = fnEmail("emailAddress", 'kr-ko');
@@ -126,7 +125,6 @@ function hkgReady() {
             $("#terms-warning-text").hide();
         }
         
-        console.log(retTF);
         if (retTF) {
             var url = "https://hooks.zapier.com/hooks/catch/15705827/3r5067i/"
             
@@ -153,7 +151,6 @@ function hkgReady() {
                 console.log('sent');
             })
             
-            console.log("send");
             $('.email-enter').hide();
             $('#sortContentList').css('filter', 'none');
             $(".express-text.air-express").css('filter', 'none');
