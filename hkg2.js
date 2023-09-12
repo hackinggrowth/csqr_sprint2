@@ -146,6 +146,7 @@ function hkgReady() {
             fd.append('agree9',$("#agree9").is(":checked") ? "Yes" : "No");
             fd.append('agree10',$("#agree10").is(":checked") ? "Yes" : "No");
             fd.append("timestamp", (new Date()).toISOString());
+            fd.append("transport", $("input[name='transport']:checked").val());
 
             fetch(url, {method:'POST', body:fd})
             .then(function(res){
