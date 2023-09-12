@@ -145,7 +145,7 @@ function hkgReady() {
             fd.append('agree8',$("#agree8").is(":checked") ? "Yes" : "No");
             fd.append('agree9',$("#agree9").is(":checked") ? "Yes" : "No");
             fd.append('agree10',$("#agree10").is(":checked") ? "Yes" : "No");
-            fd.append("timestamp", (new Date()).toLocaleString());
+            fd.append("timestamp", (new Date()).toISOString());
 
             fetch(url, {method:'POST', body:fd})
             .then(function(res){
