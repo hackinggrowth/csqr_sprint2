@@ -155,6 +155,8 @@ function hkgReady() {
             $('#sortContentList').css('filter', 'none');
             $(".express-text.air-express").css('filter', 'none');
             $(".sort-content.chk-result.air-express").css('filter','none');
+            var  top_=$('.estimate-module').position().top+100;
+            $(window).scrollTop(top_);
         }
     });
     // 모두 동의
