@@ -232,6 +232,7 @@ function goTermsOpen(v, t) {
 
     $('#popup_term0' + v).getInstance().open();
     type = t
+    $('.term-box').scrollTop(0);
 }
 
 function Popup() {
