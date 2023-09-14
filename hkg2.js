@@ -151,7 +151,7 @@ function hkgReady() {
                 console.log('sent');
             })
             
-            $('.email-enter').hide();
+            $('.mfl-modal').hide();
             $('#sortContentList').css('filter', 'none');
             $(".express-text.air-express").css('filter', 'none');
             $(".sort-content.chk-result.air-express").css('filter','none');
